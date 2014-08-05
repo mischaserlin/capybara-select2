@@ -19,10 +19,7 @@ module Capybara
         drop_container = ".select2-drop"
       end
 
-      [value].flatten.each_with_index do |value, index|
-        multiple.click if multiple# unless index == 0
-        find(:xpath, "//body").find("#{drop_container} li", text: value).click
-      end
+      find(:css, drop_container).find(:css, ".select2-result-label").click
     end
 
     def find_select2(options)
